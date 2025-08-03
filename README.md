@@ -5,14 +5,17 @@ John the Ripper: An Ethical Guide for Password Strength Auditing
 This repository provides documentation and educational resources for using John the Ripper (JtR), a powerful open-source password security auditing and recovery tool. It is intended for students, cybersecurity professionals, and system administrators to learn about password security in a controlled and ethical manner.
 
 ⚠️ Ethical Warning & Disclaimer
+
 This tool should only be used in legal and ethical scenarios such as penetration testing, educational labs, and authorized assessments. Unauthorized use can lead to severe legal consequences.
 
 By using the information in this repository, you agree that you will only use John the Ripper on systems and files for which you have explicit, written permission. The author of this guide is not responsible for any misuse or damage caused by this tool. Always act responsibly.
 
 What is John the Ripper?
+
 John the Ripper is a fast password cracker, currently available for many flavors of Unix, Windows, DOS, and OpenVMS. Its primary purpose is to detect weak Unix passwords. Besides several crypt(3) password hash types most commonly found on various Unix systems, supported out of the box are Kerberos/AFS and Windows LM hashes, plus a number of other hashes and ciphers in the community-enhanced version.
 
 Legitimate Use Cases
+
 System Administrators: To audit their own systems for weak passwords and enforce stronger password policies.
 
 Penetration Testers: To demonstrate the risk of weak passwords during an authorized security assessment.
