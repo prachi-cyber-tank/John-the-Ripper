@@ -1,7 +1,5 @@
-# John-the-Ripper
-John the Ripper is a fast password cracker
-
 John the Ripper: An Ethical Guide for Password Strength Auditing
+
 This repository provides documentation and educational resources for using John the Ripper (JtR), a powerful open-source password security auditing and recovery tool. It is intended for students, cybersecurity professionals, and system administrators to learn about password security in a controlled and ethical manner.
 
 ⚠️ Ethical Warning & Disclaimer
@@ -28,11 +26,13 @@ Advanced Lab: Cracking a SHA512 Hash on Kali Linux
 This example demonstrates a more realistic scenario. We will first change the default (and very strong) hashing algorithm on Kali Linux to a weaker one (SHA512) for educational purposes, create a test user, and then crack the user's password.
 
 Step 1: Lab Setup - Downgrade Hashing Algorithm
+
 Warning: This procedure makes your system less secure. Only perform these steps on a disposable virtual machine or a dedicated lab environment.
 
 Modern Linux systems use strong hashing algorithms like yescrypt. For this lab, we will change it to SHA512, which is faster to crack.
 
 Edit the login definitions file:
+
 
 sudo nano /etc/login.defs
 
@@ -47,6 +47,7 @@ Find the line containing password [...] pam_unix.so obscure yescrypt and change 
 Nano Editor Tip: After editing a file in nano, save and exit by pressing Ctrl + O (Write Out), Enter (to confirm the file name), and Ctrl + X (to exit).
 
 Step 2: Create a Test User and Set a Password
+
 Now we will create a user that will have its password hashed using our new, weaker configuration.
 
 Create the user:
@@ -60,6 +61,7 @@ sudo passwd testuser1
 When prompted, enter a simple password, for example, 123456.
 
 Step 3: Prepare the Password Hashes for JtR
+
 We need to extract the user's password hash and prepare it in a format that John the Ripper can understand.
 
 Verify the hash type (optional): You can see that the new user's hash uses SHA512 (indicated by the $6$ prefix).
@@ -77,6 +79,7 @@ unshadow passwd shadow > mypasswords.txt
 You now have a file named mypasswords.txt ready for auditing.
 
 Step 4: Prepare the Wordlist
+
 John the Ripper's power comes from using large lists of potential passwords (wordlists). We will use rockyou.txt, one of the most famous wordlists, which is included with Kali Linux but is often compressed.
 
 Navigate to the wordlists directory:
@@ -92,6 +95,7 @@ Navigate back to your home directory:
 cd ~
 
 Step 5: Run the Audit
+
 Now we will point John the Ripper at our hash file and tell it to use the rockyou.txt wordlist.
 
 Start the cracking process:
@@ -101,6 +105,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt mypasswords.txt
 JtR will start, load the hash, and try every password in rockyou.txt. For a simple password like 123456, it should find a match almost instantly.
 
 Step 6: View the Results
+
 Once JtR has cracked a password, it saves it to a file called john.pot. You can view all cracked passwords with the --show option.
 
 Show cracked passwords:
